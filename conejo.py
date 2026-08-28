@@ -2,31 +2,23 @@ from mascota import Mascota
 
 class Conejo(Mascota):
 
-    def __init__(self, nombre, costo_consulta, tipo_alimentacion):
+    def __init__(self,color_pelaje, nombre, costo_consulta, tipo_alimentacion):
         super().__init__(nombre, costo_consulta)
         self._tipo_alimentacion = ""
-        self.tipo_alimentacion = tipo_alimentacion  # Validación mediante setter
+        self.tipo_alimentacion = tipo_alimentacion 
+        self.color_pelaje = color_pelaje
 
-    @property
-    def tipo_alimentacion(self) -> str:
-        """Retorna el tipo de alimentación del conejo."""
-        return self._tipo_alimentacion
+    def tipo_alimentacion(self):
+        return self._tipo_alimentacions
 
-    @tipo_alimentacion.setter
-    def tipo_alimentacion(self, valor: str):
-        """
-        Regla de negocio: El tipo de alimentación de un conejo no puede estar vacío.
-        El sistema muestra un error y no acepta valores vacíos o espacios en blanco.
-        """
-        if valor and valor.strip():
-            self._tipo_alimentacion = valor.strip()
+    
+    def tipo_alimentacion(self,valor):
+    
+        if valor in valor:
+            self._tipo_alimentacion = valor
         else:
-            print(f"[ERROR] El tipo de alimentación del conejo '{self.nombre}' no puede estar vacío. Valor rechazado.")
+            print(f"El tipo de alimentación del conejo '{self.nombre}' no puede estar vacío. Valor rechazado.")
 
-    def obtener_descripcion(self) -> str:
-        """
-        Implementación del método heredado (Polimorfismo).
-        Retorna la descripción detallada del conejo.
-        """
-        return f"Conejo - Nombre: {self.nombre}, Alimentación: {self.tipo_alimentacion}, Costo Consulta: ${self.costo_consulta:.2f}"
+    def obtener_descripcion(self) :
+        return (f"Conejo - Nombre: {self.nombre}, Alimentación: {self.tipo_alimentacion}, Costo Consulta:{self.costo_consulta}")
         
